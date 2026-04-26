@@ -89,8 +89,14 @@ export default function ComparePage() {
         )}
       </main>
 
-      <footer className="border-t border-border px-6 py-4 text-[11px] text-muted-foreground lg:px-10">
-        Same data sources. Different processing layer. · Built on Memv · Cache Hackathon 2026
+      <footer className="flex flex-wrap items-center justify-between gap-3 border-t border-border px-6 py-4 text-[11px] text-muted-foreground lg:px-10">
+        <span>Same data sources. Different processing layer.</span>
+        <div className="flex items-center gap-3">
+          <span className="rounded-full border border-border bg-card px-2 py-0.5 text-[10px] tracking-wide text-foreground/80">Built on Memv</span>
+          <a href="/" className="rounded-md border border-border bg-card px-3 py-1.5 text-[11px] font-medium text-foreground transition hover:bg-muted">
+            ← See how the memory was built (intake demo)
+          </a>
+        </div>
       </footer>
     </div>
   );
