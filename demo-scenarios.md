@@ -1248,6 +1248,13 @@ client's CPA before implementing any strategy.
 
 > _Sarah pastes the most recent 1040, the Schwab statement, and a quick note about Klein Trust into ChatGPT and asks for a tax memo._
 
+**Context fed to LLM:**
+- 2024 Form 1040 first 2 pages (Sarah pasted the summary, not all schedules)
+- Schwab Q1 2026 statement p.1 (balance + concentration line — Sarah did not paste the lot detail on p.4)
+- 1-paragraph note Sarah typed about Klein Trust ("Mary inherited from her dad, K-1 coming, ~$30-45k a year maybe")
+- Sarah's framing prompt asking for a mid-year tax memo
+- [Sarah forgot to include]: May 15 RSU vest detail (`mgcp_rsu_grant_agreement_2025_04.pdf`), Mary's actual 2024 K-1 (`k1_mary_hartwell_klein_2024.pdf`), MegaCorp ESPP terms, Schwab muni-bond cost-basis lots (would have made TLH specific), 2024 Schedule A charitable contributions ($18k), Klein estate inventory yield assumption, MegaCorp deferred-comp plan rules (R1 mechanism). The depth ceiling is whatever Sarah remembered to paste — and the prompt was assembled in 12 minutes.
+
 ```
 SMITH FAMILY — 2026 MID-YEAR TAX PLANNING NOTES
 (Sarah's draft, from ChatGPT pass + manual editing)
@@ -1275,6 +1282,24 @@ Talk to your CPA before doing anything.
 ---
 
 ### Output 5 — OURS
+
+**Context fed to LLM** (task-typed retrieval — mid-year-tax-memo task pulled the full tax-relevant slice across all 26 docs):
+- `tax_return_form_1040_2024.pdf` (full return — AGI baseline $1,221,400, Sch A line 11 charitable $18,000, Sch D carryforward $9,150)
+- `tax_return_form_1040_2023.pdf` (multi-year baseline)
+- `w2_robert_megacorp_2024.pdf` (wages $385,000, RSU inclusion $164,000)
+- `k1_mary_hartwell_klein_2024.pdf` p.1 ($498,000 ordinary; +8% YoY growth assumption for 2026)
+- `mgcp_rsu_grant_agreement_2025_04.pdf` §2 (1,250 sh May 15 vest, 22% supplemental withholding) + market data MGCP close 2026-05-15 = $151.20
+- `mgcp_rsu_grant_agreement_2024_04.pdf` (prior-year vest pattern)
+- `megacorp_espp_enrollment_2026.pdf` p.1 (15% discount, 6-mo lookback — $7,200 W-2 inclusion)
+- `schwab_brokerage_statement_2026q1.pdf` p.3, p.4 (lot detail for TLH: 220 sh MGCP basis $182, 180 sh VTIAX basis $32.10, 425 sh VXUS basis $61.50, 90 sh SWNTX basis $11.85)
+- `vanguard_401k_mary_2026q1.pdf` p.1 (Mary holds no other pre-tax IRAs — clears §408(d)(2) pro-rata for backdoor Roth)
+- `fidelity_401k_robert_2026q1.pdf` p.1 (employer plan only — same logic for Robert)
+- `klein_estate_inventory_2026_03.pdf` p.1 (~$850k principal, muni + TIPS composition)
+- `klein_family_trust_certification_2026.pdf` §6 (Mary income beneficiary, partial-year 2026 from 2/14)
+- `nysaves_emma_529_2026q1.pdf` + `utah_my529_liam_2026q1.pdf` (no immediate tax interaction but inform cash-flow planning)
+- IRC §1091 wash-sale rule, §408(d)(2), §409A reference
+- IRS Pub 970 §7 (qualified higher-education expenses, gap-year context)
+- Sarah's CPA contact (Bryan Greenwald, Greenwald Tax Group) for memo routing
 
 ```
 ═══════════════════════════════════════════════════════════════
@@ -1469,6 +1494,13 @@ This is the soft-information scenario from the Oasis Group benchmark — the Kit
 
 > _Jump's Action Item Extractor surfaces explicit asks. The diagnosis was not framed as a question or a request._
 
+**Context fed to LLM:**
+- `meeting_transcript_2026-04-22.txt` (full transcript, 58 min — diagnosis appears at 47:18 in passing)
+- CRM contact card for Smith household
+- Open action items from CRM (4 items carried over from Q1)
+- Action-extraction template: "extract explicit asks and commitments"
+- [NOT in context]: any document that would let the model infer six downstream planning vectors — Charles's estate posture, Robert's LTC underwriting window, the MassMutual cash-value gap, Mary's Q1 bandwidth load, retirement Monte Carlo elder-care scenarios, Phoenix vs. Westchester care cost ranges. The diagnosis is treated as a one-line context note because the prompt is scoped to the transcript.
+
 ```
 ACTION ITEMS — 2026-04-22 meeting (Smith)
 
@@ -1487,6 +1519,13 @@ NOTES
 ---
 
 ### Output 2 — Zocks
+
+**Context fed to LLM:**
+- `meeting_transcript_2026-04-22.txt`
+- Zocks intake form (15 typed fields — no LTC field, no parent-health field, no elder-care timeline field)
+- Last Zocks structured note (Q1 2026)
+- Theme tag dictionary (includes "family-health" — first instance for this household)
+- [NOT in context]: insurance illustrations, estate documents, retirement Monte Carlo model, household composition detail beyond names + ages. Zocks correctly tags the moment as significant via theme-detection but cannot generate downstream planning actions because no document slices that would inform those actions are in the prompt.
 
 ```
 SMITH HOUSEHOLD — Action Items (2026-04-22)
@@ -1509,6 +1548,14 @@ softprobe at next meeting.
 
 ### Output 3 — Salesforce Agentforce FS
 
+**Context fed to LLM:**
+- Household record HH-44219 (Data 360 unified profile)
+- `meeting_transcript_2026-04-22.txt` via Agentforce Voice
+- Event-log schema (Family-Health-Update is a recognized event type)
+- Sentiment classifier (returns "Concern (medium)")
+- Workflow-trigger rule library (Family-Health-Update has no auto-attached workflow; it is a logging event only)
+- [NOT in context]: 24 client vault PDFs are attached to the household record but not parsed into the prompt. There is no rule that says "if family-health event AND no LTC policy on file AND advisor is 50–55, open LTC research workflow" — Agentforce logs the data point and waits for a human to write the next step.
+
 ```
 HOUSEHOLD EVENT LOG — HH-44219
 Event date:    2026-04-22
@@ -1527,6 +1574,11 @@ Sentiment:     Concern (medium)
 
 > _Sarah's mental note. She hasn't typed anything into ChatGPT about Charles. She is thinking about it on her drive home from the office. She makes a personal mental note: "I should suggest LTC for Robert sometime soon." She forgets by Wednesday._
 
+**Context fed to LLM:**
+- Nothing. Sarah never opens ChatGPT for this. The diagnosis lives in her head — not in a prompt, not in a CRM field, not in a calendar reminder, not in a task queue.
+- [Sarah's working memory by Wednesday]: the LTC instinct has been displaced by two new client meetings, a custodian operations issue, and a compliance email. The thought is gone.
+- [NOT in any prompt]: insurance illustrations, estate documents, household Monte Carlo, MassMutual cash-value gap, Phoenix elder-care cost ranges, Janet Marquez referral. The advisor's intuition was correct; the problem is that intuition is not a deliverable.
+
 **System output:** _none_
 
 **Why this misses:** This is the actual median outcome. The advisor has the right instinct. The instinct does not produce a deliverable. The next time Charles comes up will be when Robert mentions a fall, or a hospitalization, or — worst — a death.
@@ -1536,6 +1588,24 @@ Sentiment:     Concern (medium)
 ### Output 5 — OURS
 
 > _Generated automatically the morning after the April 22 meeting, addressed to the advisor (not the client). The system identified Charles Smith's diagnosis at transcript timestamp 47:18 and ran a multi-document inference cycle linking the mention to estate, insurance, retirement, and household-emotional dimensions._
+
+**Context fed to LLM** (task-typed retrieval — life-event multi-vector-inference task triggered by transcript moment 47:18):
+- `meeting_transcript_2026-04-22.txt` timestamps 47:14–47:39 (full diagnosis exchange) + 47:24 ("I'm an only" prior reference) + 03:14 (retirement-target context)
+- `meeting_transcript_2026-01-15.txt` (Q1 review — household composition baseline, Helen Smith deceased 2021 reference)
+- Q3 2025 fact-finder (Charles Smith age, Phoenix residence, 1,800 sqft single-family, 2009 will from retired AZ attorney, no POAs of record)
+- `massmutual_whole_life_robert_anniversary_2025.pdf` p.2 (CV $138,200 vs $156,800 illustration — death-benefit-adequacy input)
+- `metlife_term_life_robert.pdf` (term coverage posture)
+- `smith_revocable_living_trust_2018.pdf` + `smith_pour_over_wills_2018.pdf` (gap analysis: no Charles POA referenced, no HIPAA directives)
+- `klein_family_trust_certification_2026.pdf` + `klein_estate_inventory_2026_03.pdf` (Mary's Q1 bandwidth load — 10 weeks post Edward Klein death)
+- `vanguard_401k_mary_2026q1.pdf` p.1 (Mary's beneficiary issue — referenced as parallel emotional load)
+- Retirement Monte Carlo model state (base case 60-target, 81% success — for elder-care scenario layering)
+- `wells_fargo_mortgage_statement_2026_03.pdf` + `wells_fargo_heloc_statement_2026_03.pdf` (liability picture for death-benefit adequacy)
+- `cmu_cost_of_attendance_2026_27.pdf` + 529 statements (concurrent household financial loads)
+- LTC carrier shortlist (Mutual of Omaha CompleteCare, Nationwide CareMatters II) + age-based underwriting rules
+- Genworth 2025 Cost of Care Survey (Phoenix $95k–$145k/yr; Westchester $135k–$210k/yr)
+- General clinical literature on Parkinson's familial component (~10–20% heritability)
+- Beechwood referral list (Janet Marquez, Phoenix-based AZ estate attorney)
+- "No LTC document of record" assertion from full vault scan across 26 documents
 
 ```
 ═══════════════════════════════════════════════════════════════
