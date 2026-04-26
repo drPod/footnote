@@ -17,8 +17,8 @@ const ordinals = buildOrdinals(recordRaw);
 
 type Phase = "empty" | "ingesting" | "done";
 
-const STAGGER_MS = 90;
-const EXTRACT_MS = 700;
+const STAGGER_MS = 160;
+const EXTRACT_MS = 1400;
 
 export default function Home() {
   const [phase, setPhase] = useState<Phase>("empty");

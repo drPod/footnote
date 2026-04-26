@@ -9,23 +9,30 @@ import { cn } from "@/lib/utils";
 type Props = {
   doc: DocumentMeta;
   status: IngestStatus;
+  layoutId?: string;
 };
 
-export function DocumentCard({ doc, status }: Props) {
+export function DocumentCard({ doc, status, layoutId }: Props) {
   const { ordinals } = useApp();
   const ord = ordinals.get(doc.id);
 
   return (
     <motion.div
       layout
+      layoutId={layoutId}
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.22, ease: "easeOut" }}
+      transition={{
+        duration: 0.22,
+        ease: "easeOut",
+        layout: { duration: 0.55, ease: [0.16, 0.85, 0.36, 1] },
+      }}
       className={cn(
         "group flex items-start gap-3 rounded-lg border bg-card p-2.5 transition-all",
         status === "pending" && "border-border opacity-60",
-        status === "extracting" && "border-foreground/30 ring-1 ring-foreground/15",
-        status === "extracted" && "border-border"
+        status === "extracting" &&
+          "border-amber-300 bg-amber-50/40 ring-1 ring-amber-200/70 dark:border-amber-900/60 dark:bg-amber-950/20",
+        status === "extracted" && "border-border",
       )}
     >
       <div
