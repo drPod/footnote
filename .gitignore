@@ -39,3 +39,25 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Private client templates — never commit
+Married-Standard.docx
+*.docx
+
+# Private working notes (CLAUDE.md is local-only project memory)
+CLAUDE.md
+
+# Demo screenshots + playwright artifacts
+.playwright-mcp/
+/dashboard-*.png
+/empty-state.png
+/equity-*.png
+/factfinder-*.png
+/final-*.png
+/full-record.png
+/goals-events.png
+/hover-popover.png
+/ingest-*.png
+/post-ingest-*.png
+/tall-*.png
+/whole-life-*.png

@@ -1,65 +1,184 @@
-import Image from "next/image";
+"use client";
+
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import documentsRaw from "@/data/documents.json";
+import recordRaw from "@/data/smith-family.json";
+import { buildOrdinals } from "@/lib/citations";
+import type { DocumentMeta, IngestStatus } from "@/lib/types";
+import { AppProvider } from "./components/AppContext";
+import { FactFinder } from "./components/FactFinder";
+import { EgnyteVault } from "./components/EgnyteVault";
+import { DropZone } from "./components/DropZone";
+import { CheckCircle2, FileText, Sparkles } from "lucide-react";
+
+const documents = documentsRaw as DocumentMeta[];
+const ordinals = buildOrdinals(recordRaw);
+
+type Phase = "empty" | "ingesting" | "done";
+
+const STAGGER_MS = 90;
+const EXTRACT_MS = 700;
 
 export default function Home() {
+  const [phase, setPhase] = useState<Phase>("empty");
+  const [statuses, setStatuses] = useState<Record<string, IngestStatus>>(() => {
+    const init: Record<string, IngestStatus> = {};
+    for (const d of documents) init[d.id] = "pending";
+    return init;
+  });
+  const timersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
+
+  useEffect(() => {
+    return () => {
+      for (const t of timersRef.current) clearTimeout(t);
+    };
+  }, []);
+
+  const startIngest = useCallback(() => {
+    setPhase("ingesting");
+    documents.forEach((doc, i) => {
+      const startAt = i * STAGGER_MS;
+      const finishAt = startAt + EXTRACT_MS;
+      timersRef.current.push(
+        setTimeout(() => {
+          setStatuses((prev) => ({ ...prev, [doc.id]: "extracting" }));
+        }, startAt)
+      );
+      timersRef.current.push(
+        setTimeout(() => {
+          setStatuses((prev) => ({ ...prev, [doc.id]: "extracted" }));
+        }, finishAt)
+      );
+    });
+    timersRef.current.push(
+      setTimeout(() => {
+        setPhase("done");
+      }, documents.length * STAGGER_MS + EXTRACT_MS + 80)
+    );
+  }, []);
+
+  const extractedIds = useMemo(() => {
+    const set = new Set<string>();
+    for (const id in statuses) if (statuses[id] === "extracted") set.add(id);
+    return set;
+  }, [statuses]);
+
+  const extractedCount = extractedIds.size;
+  const total = documents.length;
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <AppProvider value={{ extractedIds, ordinals, documents }}>
+      <div className="flex min-h-screen flex-col">
+        <Header phase={phase} extractedCount={extractedCount} total={total} />
+
+        <main className="flex flex-1 flex-col">
+          <AnimatePresence mode="wait">
+            {phase === "empty" ? (
+              <motion.div
+                key="empty"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.18 }}
+                className="flex flex-1 flex-col px-6 py-8 lg:px-10"
+              >
+                <DropZone onTrigger={startIngest} documentCount={total} />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="active"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.25 }}
+                className="grid w-full flex-1 grid-cols-1 gap-6 px-6 py-6 lg:grid-cols-[340px_minmax(0,1fr)] lg:gap-8 lg:px-10"
+              >
+                <EgnyteVault
+                  documents={documents}
+                  statuses={statuses}
+                  total={total}
+                  extractedCount={extractedCount}
+                  syncing={phase === "ingesting"}
+                />
+
+                <div className="min-w-0">
+                  <div className="mb-3 flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.12em] text-muted-foreground">
+                      <FileText size={12} />
+                      <span>
+                        Generated artifact ·{" "}
+                        <span className="text-foreground">
+                          Married-Couple Fact Finder
+                        </span>
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-1.5 rounded-full bg-muted px-2.5 py-1 text-[11px] text-muted-foreground">
+                      <Sparkles size={11} className={phase === "ingesting" ? "text-amber-600" : "text-foreground"} />
+                      <span>
+                        {phase === "ingesting"
+                          ? `Summarizing… ${extractedCount}/${total}`
+                          : "Auto-summarized from 26 documents"}
+                      </span>
+                    </div>
+                  </div>
+                  <FactFinder />
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </main>
+
+        <footer className="border-t border-border px-6 py-4 text-[11px] text-muted-foreground lg:px-10">
+          Beechwood Wealth Partners · Smith Family record · prototype build for Cache Hackathon
+          2026 · all extraction citations link back to source PDF + page
+        </footer>
+      </div>
+    </AppProvider>
+  );
+}
+
+function Header({
+  phase,
+  extractedCount,
+  total,
+}: {
+  phase: Phase;
+  extractedCount: number;
+  total: number;
+}) {
+  const status =
+    phase === "empty"
+      ? "No documents loaded"
+      : phase === "ingesting"
+        ? `Extracting ${extractedCount} / ${total}…`
+        : `${extractedCount} of ${total} documents extracted`;
+
+  return (
+    <header className="sticky top-0 z-20 border-b border-border bg-background/85 px-6 py-3 backdrop-blur-sm lg:px-10">
+      <div className="flex items-center justify-between gap-4">
+        <div className="flex items-baseline gap-3">
+          <h1 className="font-heading text-lg font-medium tracking-tight text-foreground">
+            Smith Family
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+          <span className="hidden text-[12px] text-muted-foreground sm:inline">
+            Robert &amp; Mary Smith · Bronxville, NY
+          </span>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 rounded-full bg-muted px-2.5 py-1 text-[11px] text-muted-foreground">
+            {phase === "done" ? (
+              <CheckCircle2 size={12} className="text-emerald-600 dark:text-emerald-400" />
+            ) : (
+              <FileText size={12} />
+            )}
+            <span className="tabular-nums">{status}</span>
+          </div>
+          <div className="hidden items-center gap-2 text-[11px] text-muted-foreground md:flex">
+            <span className="text-muted-foreground/70">Advisor</span>
+            <span className="text-foreground">Sarah Chen, CFP</span>
+          </div>
         </div>
-      </main>
-    </div>
+      </div>
+    </header>
   );
 }

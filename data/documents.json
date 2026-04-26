@@ -1,0 +1,236 @@
+[
+  {
+    "id": "doc01_1040_2024",
+    "filename": "tax_return_form_1040_2024.pdf",
+    "label": "Form 1040 — 2024",
+    "category": "Tax",
+    "source": "TurboTax export",
+    "pages": 12,
+    "uploadedAt": "2025-04-12"
+  },
+  {
+    "id": "doc02_1040_2023",
+    "filename": "tax_return_form_1040_2023.pdf",
+    "label": "Form 1040 — 2023",
+    "category": "Tax",
+    "source": "TurboTax export",
+    "pages": 12,
+    "uploadedAt": "2024-04-09"
+  },
+  {
+    "id": "doc03_w2_robert_2024",
+    "filename": "w2_robert_megacorp_2024.pdf",
+    "label": "W-2 — Robert / MegaCorp 2024",
+    "category": "Income",
+    "source": "MegaCorp HR",
+    "pages": 1,
+    "uploadedAt": "2025-02-04"
+  },
+  {
+    "id": "doc04_k1_mary_2024",
+    "filename": "k1_mary_hartwell_klein_2024.pdf",
+    "label": "K-1 — Mary / Hartwell & Klein 2024",
+    "category": "Income",
+    "source": "Hartwell & Klein LLP",
+    "pages": 3,
+    "uploadedAt": "2025-03-22"
+  },
+  {
+    "id": "doc05_schwab_2026q1",
+    "filename": "schwab_brokerage_statement_2026q1.pdf",
+    "label": "Schwab Brokerage — Q1 2026",
+    "category": "Investment",
+    "source": "Charles Schwab",
+    "pages": 18,
+    "uploadedAt": "2026-04-02"
+  },
+  {
+    "id": "doc06_fidelity_401k_robert",
+    "filename": "fidelity_401k_robert_2026q1.pdf",
+    "label": "Fidelity 401(k) — Robert Q1 2026",
+    "category": "Retirement",
+    "source": "Fidelity NetBenefits",
+    "pages": 6,
+    "uploadedAt": "2026-04-04"
+  },
+  {
+    "id": "doc07_vanguard_401k_mary",
+    "filename": "vanguard_401k_mary_2026q1.pdf",
+    "label": "Vanguard 401(k) — Mary Q1 2026",
+    "category": "Retirement",
+    "source": "Vanguard Personal Investor",
+    "pages": 8,
+    "uploadedAt": "2026-04-18"
+  },
+  {
+    "id": "doc08_nysaves_emma",
+    "filename": "nysaves_emma_529_2026q1.pdf",
+    "label": "NY 529 — Emma Q1 2026",
+    "category": "Education",
+    "source": "NY 529 Direct Plan",
+    "pages": 4,
+    "uploadedAt": "2026-04-05"
+  },
+  {
+    "id": "doc09_my529_liam",
+    "filename": "utah_my529_liam_2026q1.pdf",
+    "label": "Utah my529 — Liam Q1 2026",
+    "category": "Education",
+    "source": "my529",
+    "pages": 4,
+    "uploadedAt": "2026-04-05"
+  },
+  {
+    "id": "doc10_fidelity_hsa",
+    "filename": "fidelity_hsa_robert_2026q1.pdf",
+    "label": "Fidelity HSA — Robert Q1 2026",
+    "category": "Retirement",
+    "source": "Fidelity HSA",
+    "pages": 3,
+    "uploadedAt": "2026-04-04"
+  },
+  {
+    "id": "doc11_metlife_term_robert",
+    "filename": "metlife_term_life_robert.pdf",
+    "label": "MetLife 20-yr Term — Robert",
+    "category": "Insurance",
+    "source": "MetLife",
+    "pages": 22,
+    "uploadedAt": "2024-11-12"
+  },
+  {
+    "id": "doc12_pru_term_mary",
+    "filename": "prudential_term_life_mary.pdf",
+    "label": "Prudential 20-yr Term — Mary",
+    "category": "Insurance",
+    "source": "Prudential",
+    "pages": 24,
+    "uploadedAt": "2024-09-30"
+  },
+  {
+    "id": "doc13_massmutual_whole_robert",
+    "filename": "massmutual_whole_life_robert_anniversary_2025.pdf",
+    "label": "MassMutual Whole Life — Anniversary 2025",
+    "category": "Insurance",
+    "source": "MassMutual",
+    "pages": 14,
+    "uploadedAt": "2026-01-09"
+  },
+  {
+    "id": "doc14_wf_mortgage",
+    "filename": "wells_fargo_mortgage_statement_2026_03.pdf",
+    "label": "Wells Fargo Mortgage — Mar 2026",
+    "category": "Real Estate",
+    "source": "Wells Fargo Home Mortgage",
+    "pages": 4,
+    "uploadedAt": "2026-04-01"
+  },
+  {
+    "id": "doc15_wf_heloc",
+    "filename": "wells_fargo_heloc_statement_2026_03.pdf",
+    "label": "Wells Fargo HELOC — Mar 2026",
+    "category": "Real Estate",
+    "source": "Wells Fargo",
+    "pages": 3,
+    "uploadedAt": "2026-04-01"
+  },
+  {
+    "id": "doc16_rlt_2018",
+    "filename": "smith_revocable_living_trust_2018.pdf",
+    "label": "Smith Family Revocable Living Trust (2018)",
+    "category": "Estate",
+    "source": "Cohen Stein & Park LLP",
+    "pages": 38,
+    "uploadedAt": "2018-06-20"
+  },
+  {
+    "id": "doc17_pour_over_wills",
+    "filename": "smith_pour_over_wills_2018.pdf",
+    "label": "Smith Pour-Over Wills (2018)",
+    "category": "Estate",
+    "source": "Cohen Stein & Park LLP",
+    "pages": 12,
+    "uploadedAt": "2018-06-20"
+  },
+  {
+    "id": "doc18_klein_trust_cert",
+    "filename": "klein_family_trust_certification_2026.pdf",
+    "label": "Klein Family Trust — Certification (2026)",
+    "category": "Estate",
+    "source": "David Klein, Trustee",
+    "pages": 6,
+    "uploadedAt": "2026-03-04"
+  },
+  {
+    "id": "doc19_klein_inventory",
+    "filename": "klein_estate_inventory_2026_03.pdf",
+    "label": "Klein Estate Inventory — Mar 2026",
+    "category": "Estate",
+    "source": "David Klein, Trustee",
+    "pages": 7,
+    "uploadedAt": "2026-03-22"
+  },
+  {
+    "id": "doc20_rsu_2025",
+    "filename": "mgcp_rsu_grant_agreement_2025_04.pdf",
+    "label": "MGCP RSU Grant — Apr 2025",
+    "category": "Equity Comp",
+    "source": "MegaCorp Equity Plan",
+    "pages": 11,
+    "uploadedAt": "2025-04-22"
+  },
+  {
+    "id": "doc21_rsu_2024",
+    "filename": "mgcp_rsu_grant_agreement_2024_04.pdf",
+    "label": "MGCP RSU Grant — Apr 2024",
+    "category": "Equity Comp",
+    "source": "MegaCorp Equity Plan",
+    "pages": 11,
+    "uploadedAt": "2024-04-23"
+  },
+  {
+    "id": "doc22_megacorp_espp",
+    "filename": "megacorp_espp_enrollment_2026.pdf",
+    "label": "MegaCorp ESPP Enrollment — 2026",
+    "category": "Equity Comp",
+    "source": "MegaCorp HR",
+    "pages": 5,
+    "uploadedAt": "2026-01-12"
+  },
+  {
+    "id": "doc23_cmu_admission",
+    "filename": "cmu_admission_letter_emma_2026_03.pdf",
+    "label": "CMU Admission Letter — Emma",
+    "category": "Education",
+    "source": "Carnegie Mellon Admissions",
+    "pages": 2,
+    "uploadedAt": "2026-03-15"
+  },
+  {
+    "id": "doc24_cmu_cost",
+    "filename": "cmu_cost_of_attendance_2026_27.pdf",
+    "label": "CMU Cost of Attendance 2026-27",
+    "category": "Education",
+    "source": "CMU Financial Aid Office",
+    "pages": 3,
+    "uploadedAt": "2026-03-30"
+  },
+  {
+    "id": "doc25_meeting_2026_04_22",
+    "filename": "meeting_transcript_2026-04-22.txt",
+    "label": "Advisor Meeting Transcript — Apr 22, 2026",
+    "category": "Meeting",
+    "source": "Zoom + Otter.ai",
+    "pages": 1,
+    "uploadedAt": "2026-04-22"
+  },
+  {
+    "id": "doc26_meeting_2026_01_15",
+    "filename": "meeting_transcript_2026-01-15.txt",
+    "label": "Advisor Meeting Transcript — Jan 15, 2026",
+    "category": "Meeting",
+    "source": "Zoom + Otter.ai",
+    "pages": 1,
+    "uploadedAt": "2026-01-15"
+  }
+]

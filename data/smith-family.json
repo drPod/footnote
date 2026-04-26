@@ -1,0 +1,280 @@
+{
+  "client": {
+    "displayName": "Smith Family",
+    "advisor": "Sarah Chen, CFP",
+    "firm": "Beechwood Wealth Partners",
+    "asOf": "2026-04-26"
+  },
+  "household": {
+    "filingStatus": {
+      "value": "Married filing jointly",
+      "citations": [{ "documentId": "doc01_1040_2024", "page": 1, "excerpt": "Filing status: Married filing jointly" }]
+    },
+    "marriageDate": {
+      "value": "2003-09-14",
+      "citations": [{ "documentId": "doc16_rlt_2018", "page": 2, "excerpt": "Robert and Mary Smith, married September 14, 2003" }]
+    },
+    "primaryAddress": {
+      "value": "47 Beechwood Lane, Bronxville, NY 10708",
+      "citations": [{ "documentId": "doc01_1040_2024", "page": 1, "excerpt": "Home address (line above filing status)" }]
+    },
+    "members": [
+      {
+        "role": "Spouse 1",
+        "name": { "value": "Robert Smith", "citations": [{ "documentId": "doc01_1040_2024", "page": 1 }] },
+        "age": { "value": 54, "citations": [{ "documentId": "doc01_1040_2024", "page": 1 }] },
+        "employer": { "value": "MegaCorp Inc. (NASDAQ: MGCP)", "citations": [{ "documentId": "doc03_w2_robert_2024", "page": 1, "excerpt": "Employer: MegaCorp Inc." }] },
+        "title": { "value": "VP of Engineering", "citations": [{ "documentId": "doc03_w2_robert_2024", "page": 1 }] }
+      },
+      {
+        "role": "Spouse 2",
+        "name": { "value": "Mary Smith", "citations": [{ "documentId": "doc01_1040_2024", "page": 1 }] },
+        "age": { "value": 51, "citations": [{ "documentId": "doc01_1040_2024", "page": 1 }] },
+        "employer": { "value": "Hartwell & Klein LLP", "citations": [{ "documentId": "doc04_k1_mary_2024", "page": 1, "excerpt": "Partnership: Hartwell & Klein LLP" }] },
+        "title": { "value": "Partner (ERISA / Employee Benefits)", "citations": [{ "documentId": "doc04_k1_mary_2024", "page": 1 }] }
+      },
+      {
+        "role": "Child",
+        "name": { "value": "Emma Smith", "citations": [{ "documentId": "doc23_cmu_admission", "page": 1 }] },
+        "age": { "value": 18, "citations": [{ "documentId": "doc01_1040_2024", "page": 1, "excerpt": "Dependent: Emma Smith, DOB 2008" }] },
+        "school": { "value": "Bronxville HS senior → Carnegie Mellon BS CS, Fall 2026", "citations": [{ "documentId": "doc23_cmu_admission", "page": 1, "excerpt": "Admission to BS Computer Science, Fall 2026" }] }
+      },
+      {
+        "role": "Child",
+        "name": { "value": "Liam Smith", "citations": [{ "documentId": "doc01_1040_2024", "page": 1 }] },
+        "age": { "value": 16, "citations": [{ "documentId": "doc01_1040_2024", "page": 1 }] },
+        "school": { "value": "Bronxville HS junior — gap year planned 2027-28", "citations": [{ "documentId": "doc25_meeting_2026_04_22", "page": 1, "excerpt": "Mary on Liam's gap year (Outward Bound) [18:05]" }] }
+      }
+    ]
+  },
+  "income": {
+    "robertBaseSalary": {
+      "value": 385000,
+      "citations": [{ "documentId": "doc03_w2_robert_2024", "page": 1, "excerpt": "Box 1 wages, after RSU & bonus subtraction" }]
+    },
+    "robertTargetBonus": {
+      "value": 115500,
+      "citations": [{ "documentId": "doc20_rsu_2025", "page": 3, "excerpt": "Target annual incentive: 30% of base" }]
+    },
+    "maryK1Income2025": {
+      "value": 540000,
+      "citations": [{ "documentId": "doc04_k1_mary_2024", "page": 2, "excerpt": "Box 14, self-employment earnings (2024 baseline; 2025 verbal projection in meeting)" }, { "documentId": "doc25_meeting_2026_04_22", "page": 1 }]
+    },
+    "agi2024": {
+      "value": 1085200,
+      "citations": [{ "documentId": "doc01_1040_2024", "page": 1, "excerpt": "Adjusted Gross Income, line 11" }]
+    }
+  },
+  "accounts": {
+    "brokerage": [
+      {
+        "label": "Joint Schwab Brokerage",
+        "accountSuffix": { "value": "····7741", "citations": [{ "documentId": "doc05_schwab_2026q1", "page": 1 }] },
+        "balance": { "value": 1852000, "citations": [{ "documentId": "doc05_schwab_2026q1", "page": 1, "excerpt": "Total account value as of 03/31/2026" }] },
+        "asOf": { "value": "2026-03-31", "citations": [{ "documentId": "doc05_schwab_2026q1", "page": 1 }] },
+        "positions": [
+          {
+            "ticker": { "value": "MGCP", "citations": [{ "documentId": "doc05_schwab_2026q1", "page": 4 }] },
+            "shares": { "value": 3200, "citations": [{ "documentId": "doc05_schwab_2026q1", "page": 4 }] },
+            "marketValue": { "value": 480000, "citations": [{ "documentId": "doc05_schwab_2026q1", "page": 4, "excerpt": "MegaCorp Inc. common, 3,200 sh @ $150.00" }] },
+            "costBasis": { "value": 358400, "citations": [{ "documentId": "doc05_schwab_2026q1", "page": 4, "excerpt": "Average cost basis $112.00/sh" }] },
+            "concentrationFlag": { "value": true, "citations": [{ "documentId": "doc05_schwab_2026q1", "page": 4 }] }
+          },
+          { "ticker": { "value": "VTI", "citations": [{ "documentId": "doc05_schwab_2026q1", "page": 5 }] }, "marketValue": { "value": 610000, "citations": [{ "documentId": "doc05_schwab_2026q1", "page": 5 }] } },
+          { "ticker": { "value": "VXUS", "citations": [{ "documentId": "doc05_schwab_2026q1", "page": 5 }] }, "marketValue": { "value": 185000, "citations": [{ "documentId": "doc05_schwab_2026q1", "page": 5 }] } },
+          { "ticker": { "value": "SWNTX", "citations": [{ "documentId": "doc05_schwab_2026q1", "page": 6 }] }, "marketValue": { "value": 290000, "citations": [{ "documentId": "doc05_schwab_2026q1", "page": 6 }] } },
+          { "ticker": { "value": "NY GO Munis (individual)", "citations": [{ "documentId": "doc05_schwab_2026q1", "page": 7 }] }, "marketValue": { "value": 200000, "citations": [{ "documentId": "doc05_schwab_2026q1", "page": 7 }] } },
+          { "ticker": { "value": "Cash & sweep", "citations": [{ "documentId": "doc05_schwab_2026q1", "page": 1 }] }, "marketValue": { "value": 87000, "citations": [{ "documentId": "doc05_schwab_2026q1", "page": 1 }] } }
+        ]
+      }
+    ],
+    "retirement": [
+      {
+        "label": "Fidelity 401(k) — Robert",
+        "balance": { "value": 1103400, "citations": [{ "documentId": "doc06_fidelity_401k_robert", "page": 1 }] },
+        "allocation": { "value": "100% Fidelity Freedom 2035 (FFTHX)", "citations": [{ "documentId": "doc06_fidelity_401k_robert", "page": 2 }] },
+        "primaryBeneficiary": { "value": "Mary Smith — 100%", "citations": [{ "documentId": "doc06_fidelity_401k_robert", "page": 5 }] },
+        "asOf": { "value": "2026-03-31", "citations": [{ "documentId": "doc06_fidelity_401k_robert", "page": 1 }] }
+      },
+      {
+        "label": "Vanguard 401(k) — Mary",
+        "balance": { "value": 748200, "citations": [{ "documentId": "doc07_vanguard_401k_mary", "page": 1 }] },
+        "allocation": { "value": "60% VTSAX / 30% VTIAX / 10% VBTLX", "citations": [{ "documentId": "doc07_vanguard_401k_mary", "page": 3 }] },
+        "primaryBeneficiary": {
+          "value": "Edward Klein — 100% (DECEASED 02/14/2026)",
+          "alert": "Primary beneficiary is Mary's father, who passed away 2 months ago. Contingent beneficiary blank.",
+          "citations": [
+            { "documentId": "doc07_vanguard_401k_mary", "page": 1, "excerpt": "Primary beneficiary: Edward J. Klein, relation: Father, share: 100%" },
+            { "documentId": "doc18_klein_trust_cert", "page": 1, "excerpt": "Edward Klein, date of death: February 14, 2026" }
+          ]
+        },
+        "asOf": { "value": "2026-03-31", "citations": [{ "documentId": "doc07_vanguard_401k_mary", "page": 1 }] }
+      },
+      {
+        "label": "Fidelity HSA — Robert",
+        "balance": { "value": 42300, "citations": [{ "documentId": "doc10_fidelity_hsa", "page": 1 }] },
+        "contributionRoom2026": { "value": 8300, "citations": [{ "documentId": "doc10_fidelity_hsa", "page": 2, "excerpt": "Family HDHP 2026 limit $8,300" }] }
+      }
+    ]
+  },
+  "insurance": {
+    "policies": [
+      {
+        "label": "MetLife 20-yr Term — Robert",
+        "faceAmount": { "value": 500000, "citations": [{ "documentId": "doc11_metlife_term_robert", "page": 1 }] },
+        "annualPremium": { "value": 612, "citations": [{ "documentId": "doc11_metlife_term_robert", "page": 2 }] },
+        "issueDate": { "value": "2014-11-01", "citations": [{ "documentId": "doc11_metlife_term_robert", "page": 1 }] },
+        "beneficiary": { "value": "Mary Smith — 100%", "citations": [{ "documentId": "doc11_metlife_term_robert", "page": 4 }] }
+      },
+      {
+        "label": "Prudential 20-yr Term — Mary",
+        "faceAmount": { "value": 500000, "citations": [{ "documentId": "doc12_pru_term_mary", "page": 1 }] },
+        "annualPremium": { "value": 784, "citations": [{ "documentId": "doc12_pru_term_mary", "page": 2 }] },
+        "issueDate": { "value": "2014-09-01", "citations": [{ "documentId": "doc12_pru_term_mary", "page": 1 }] },
+        "beneficiary": { "value": "Robert Smith — 100%", "citations": [{ "documentId": "doc12_pru_term_mary", "page": 4 }] }
+      },
+      {
+        "label": "MassMutual Whole Life — Robert (pre-marriage)",
+        "policyNumber": { "value": "ML-19980412", "citations": [{ "documentId": "doc13_massmutual_whole_robert", "page": 1 }] },
+        "faceAmount": { "value": 250000, "citations": [{ "documentId": "doc13_massmutual_whole_robert", "page": 1 }] },
+        "annualPremium": { "value": 2400, "citations": [{ "documentId": "doc13_massmutual_whole_robert", "page": 2 }] },
+        "cashValue": { "value": 138200, "citations": [{ "documentId": "doc13_massmutual_whole_robert", "page": 3, "excerpt": "Net cash value as of 12/31/2025" }] },
+        "illustrationProjected": { "value": 156800, "citations": [{ "documentId": "doc13_massmutual_whole_robert", "page": 11, "excerpt": "1998 illustration, year-27 projected cash value" }] },
+        "tracking": {
+          "value": "11.9% below 1998 illustration",
+          "alert": "Cash value running $18,600 below original illustration. Last reviewed: never.",
+          "citations": [{ "documentId": "doc13_massmutual_whole_robert", "page": 3 }, { "documentId": "doc13_massmutual_whole_robert", "page": 11 }]
+        }
+      }
+    ],
+    "longTermCare": {
+      "value": "None on file",
+      "citations": [{ "documentId": "doc01_1040_2024", "page": 4, "excerpt": "No Schedule A LTC premium deduction; no LTC policy uploaded to vault" }]
+    }
+  },
+  "realEstate": [
+    {
+      "label": "Primary residence — Bronxville, NY",
+      "address": { "value": "47 Beechwood Lane, Bronxville, NY 10708", "citations": [{ "documentId": "doc14_wf_mortgage", "page": 1 }] },
+      "estimatedValue": { "value": 1605000, "citations": [{ "documentId": "doc14_wf_mortgage", "page": 1, "excerpt": "Property valuation source: Zillow Zestimate Apr 2026 (advisor-entered)" }] },
+      "mortgagePrincipal": { "value": 621800, "citations": [{ "documentId": "doc14_wf_mortgage", "page": 1, "excerpt": "Principal balance" }] },
+      "mortgageRate": { "value": 0.031, "citations": [{ "documentId": "doc14_wf_mortgage", "page": 1, "excerpt": "Note rate 3.10%, 30-yr fixed, refi 12/14/2021" }] },
+      "helocBalance": { "value": 150000, "citations": [{ "documentId": "doc15_wf_heloc", "page": 1 }] },
+      "helocRate": { "value": 0.0683, "citations": [{ "documentId": "doc15_wf_heloc", "page": 1, "excerpt": "Variable rate SOFR + 1.50%" }] }
+    },
+    {
+      "label": "Vacation home — Wellfleet, MA",
+      "address": { "value": "8 Sandpiper Way, Wellfleet, MA", "citations": [{ "documentId": "doc16_rlt_2018", "page": 14, "excerpt": "Schedule A: Real property held in trust" }] },
+      "estimatedValue": { "value": 920000, "citations": [{ "documentId": "doc16_rlt_2018", "page": 14 }] },
+      "mortgagePrincipal": { "value": 0, "citations": [{ "documentId": "doc16_rlt_2018", "page": 14, "excerpt": "Owned free and clear" }] },
+      "titleHolder": { "value": "Smith Family Revocable Living Trust (06/12/2018)", "citations": [{ "documentId": "doc16_rlt_2018", "page": 1 }] }
+    }
+  ],
+  "estate": {
+    "documents": [
+      {
+        "label": "Smith Family Revocable Living Trust",
+        "executed": { "value": "2018-06-12", "citations": [{ "documentId": "doc16_rlt_2018", "page": 1 }] },
+        "drafter": { "value": "Cohen, Stein & Park LLP", "citations": [{ "documentId": "doc16_rlt_2018", "page": 38 }] },
+        "lastUpdated": {
+          "value": "Never updated since execution",
+          "alert": "Trust predates Klein inheritance, Charles's diagnosis, and both children reaching majority.",
+          "citations": [{ "documentId": "doc16_rlt_2018", "page": 1 }]
+        }
+      },
+      {
+        "label": "Pour-over Wills (Robert & Mary)",
+        "executed": { "value": "2018-06-12", "citations": [{ "documentId": "doc17_pour_over_wills", "page": 1 }] }
+      }
+    ],
+    "klein": {
+      "label": "Klein Family Trust (inherited)",
+      "establishedOn": { "value": "2026-02-14", "citations": [{ "documentId": "doc18_klein_trust_cert", "page": 1, "excerpt": "Trust established upon death of Edward Klein, 02/14/2026" }] },
+      "decedent": { "value": "Edward Klein (Mary's father, age 78)", "citations": [{ "documentId": "doc18_klein_trust_cert", "page": 1 }] },
+      "trustee": { "value": "David Klein (Mary's brother, CPA)", "citations": [{ "documentId": "doc18_klein_trust_cert", "page": 2 }] },
+      "incomeBeneficiary": { "value": "Mary Smith (sole)", "citations": [{ "documentId": "doc18_klein_trust_cert", "page": 3 }] },
+      "remainderBeneficiaries": { "value": "Emma & Liam Smith — equal shares", "citations": [{ "documentId": "doc18_klein_trust_cert", "page": 3 }] },
+      "estimatedCorpus": { "value": 850000, "citations": [{ "documentId": "doc19_klein_inventory", "page": 1, "excerpt": "Total inventoried assets transferred into trust" }] },
+      "projectedAnnualK1": { "value": 42000, "citations": [{ "documentId": "doc19_klein_inventory", "page": 5, "excerpt": "Munis + TIPS yield blend ~4.9%" }] }
+    }
+  },
+  "equityComp": {
+    "rsuGrants": [
+      {
+        "label": "April 2025 Grant",
+        "totalSharesGranted": { "value": 5000, "citations": [{ "documentId": "doc20_rsu_2025", "page": 1 }] },
+        "vestSchedule": { "value": "25%/yr over 4 years on Apr 15 & Oct 15", "citations": [{ "documentId": "doc20_rsu_2025", "page": 2 }] },
+        "nextVestDate": { "value": "2026-05-15", "citations": [{ "documentId": "doc20_rsu_2025", "page": 2, "excerpt": "Vesting Schedule, tranche 2 — May 15, 2026" }] },
+        "nextVestShares": { "value": 1250, "citations": [{ "documentId": "doc20_rsu_2025", "page": 2 }] },
+        "nextVestEstimatedValue": {
+          "value": 187500,
+          "alert": "$187,500 ordinary income hits in 19 days. 22% supplemental withholding ≈ $41,250.",
+          "citations": [{ "documentId": "doc20_rsu_2025", "page": 2 }, { "documentId": "doc05_schwab_2026q1", "page": 4, "excerpt": "MGCP closing price reference $150.00" }]
+        }
+      },
+      {
+        "label": "April 2024 Grant",
+        "totalSharesGranted": { "value": 4000, "citations": [{ "documentId": "doc21_rsu_2024", "page": 1 }] },
+        "vestSchedule": { "value": "25%/yr over 4 years on Apr 15 & Oct 15", "citations": [{ "documentId": "doc21_rsu_2024", "page": 2 }] }
+      }
+    ],
+    "espp": {
+      "discount": { "value": 0.15, "citations": [{ "documentId": "doc22_megacorp_espp", "page": 1 }] },
+      "lookback": { "value": "6-month lookback", "citations": [{ "documentId": "doc22_megacorp_espp", "page": 1 }] },
+      "enrolled": { "value": true, "citations": [{ "documentId": "doc22_megacorp_espp", "page": 2 }] }
+    }
+  },
+  "education": {
+    "plans529": [
+      {
+        "child": { "value": "Emma Smith", "citations": [{ "documentId": "doc08_nysaves_emma", "page": 1 }] },
+        "plan": { "value": "NY 529 Direct (NYSAVES) — age-based moderate", "citations": [{ "documentId": "doc08_nysaves_emma", "page": 1 }] },
+        "balance": { "value": 180400, "citations": [{ "documentId": "doc08_nysaves_emma", "page": 1, "excerpt": "Account value 03/31/2026" }] }
+      },
+      {
+        "child": { "value": "Liam Smith", "citations": [{ "documentId": "doc09_my529_liam", "page": 1 }] },
+        "plan": { "value": "Utah my529 — target enrollment 2028", "citations": [{ "documentId": "doc09_my529_liam", "page": 1 }] },
+        "balance": { "value": 120150, "citations": [{ "documentId": "doc09_my529_liam", "page": 1 }] }
+      }
+    ],
+    "emmaCollege": {
+      "school": { "value": "Carnegie Mellon University, BS Computer Science", "citations": [{ "documentId": "doc23_cmu_admission", "page": 1 }] },
+      "matriculation": { "value": "2026-09-01", "citations": [{ "documentId": "doc23_cmu_admission", "page": 1 }] },
+      "year1Cost": { "value": 87200, "citations": [{ "documentId": "doc24_cmu_cost", "page": 1, "excerpt": "Tuition $66,920 + room/board $17,580 + fees/books $2,700" }] },
+      "fourYearProjected": { "value": 370000, "citations": [{ "documentId": "doc24_cmu_cost", "page": 3, "excerpt": "Assumes 5% annual cost-of-attendance inflation" }] }
+    }
+  },
+  "goals": [
+    {
+      "label": "Retire at 60 (Robert)",
+      "previous": { "value": "Previously 62", "citations": [{ "documentId": "doc26_meeting_2026_01_15", "page": 1, "excerpt": "Robert: 'targeting 62 retirement'" }] },
+      "current": { "value": "Age 60 (May 2032)", "citations": [{ "documentId": "doc25_meeting_2026_04_22", "page": 1, "excerpt": "Robert [03:14]: 'I want to retire at 60 instead of 62'" }] },
+      "trigger": { "value": "Father's Parkinson's diagnosis (Apr 8, 2026)", "citations": [{ "documentId": "doc25_meeting_2026_04_22", "page": 1, "excerpt": "Robert [47:18]: 'watching dad lose his independence put a clock on it'" }] }
+    },
+    {
+      "label": "Fund Emma's CMU education in full",
+      "current": { "value": "$370k 4-year nominal vs $180k 529 balance", "citations": [{ "documentId": "doc08_nysaves_emma", "page": 1 }, { "documentId": "doc24_cmu_cost", "page": 3 }] }
+    },
+    {
+      "label": "Liam gap year (2027-28) → engineering",
+      "current": { "value": "Outward Bound semester + internship", "citations": [{ "documentId": "doc25_meeting_2026_04_22", "page": 1, "excerpt": "Mary [18:05]: gap-year 529 distribution rules question" }] }
+    }
+  ],
+  "recentLifeEvents": [
+    {
+      "date": "2026-02-14",
+      "headline": "Mary inherited ≈$850k via Klein Family Trust",
+      "detail": { "value": "Father Edward Klein (78) died — pancreatic cancer, Westport CT. Sole income beneficiary; Emma & Liam remainder.", "citations": [{ "documentId": "doc18_klein_trust_cert", "page": 1 }, { "documentId": "doc19_klein_inventory", "page": 1 }] }
+    },
+    {
+      "date": "2026-04-08",
+      "headline": "Charles Smith (Robert's father) diagnosed with Parkinson's",
+      "detail": { "value": "Banner Neurology, Phoenix AZ. Widowed, lives alone, no current POA. 2009 will is only estate doc on file.", "citations": [{ "documentId": "doc25_meeting_2026_04_22", "page": 1, "excerpt": "Robert [47:18] — diagnosis disclosed" }] }
+    },
+    {
+      "date": "2026-05-15",
+      "headline": "Robert RSU vest — 1,250 shares MGCP (~$187,500)",
+      "detail": { "value": "22% federal supplemental withholding mandatory. Sell-to-cover defaults to net shares to broker.", "citations": [{ "documentId": "doc20_rsu_2025", "page": 2 }] }
+    }
+  ]
+}
